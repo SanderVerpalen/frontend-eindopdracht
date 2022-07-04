@@ -37,10 +37,36 @@
   }
 }
 
-.outer-container {
-  background-image: url("./assets/background-picture.png");
-  background-size: 1280px 610px;
-  background-repeat: no-repeat;
-  height: 610px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
+.outer-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid orangered 3px;
+}
+
+main {
+  border: solid coral 3px;
+  max-width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: end;
+}
+
+.page {
+  border: solid crimson 3px;
+  max-width: 50%;
+  width: 100%;
+}
+
+footer {
+  border: solid green 3px;
+}
