@@ -1,0 +1,18 @@
+nav {
+display: flex;
+    justify-content: center;
+    border: solid darkred 3px;
+    height: 60px;
+}
+
+.nav-container {
+    display: flex;
+    max-width: 680px;
+    align-items: center;
+    justify-content: center;
+    border: solid crimson 3px;
+}
+
+ul {
+    display: flex;
+}

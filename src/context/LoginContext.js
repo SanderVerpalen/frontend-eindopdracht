@@ -22,4 +22,4 @@ function LoginContextProvider({ children }) {
     )
 }
 
-export default LoginContextProvider
+export default LoginContextProvider;

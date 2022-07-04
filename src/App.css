@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.outer-container {
+  background-image: url("./assets/background-picture.png");
+  background-size: 1280px 610px;
+  background-repeat: no-repeat;
+  height: 610px;
+}
+
