@@ -1,0 +1,31 @@
+
+.home-page {
+    max-height: 90vh;
+    padding: 10px;
+    margin: 10px;
+    flex: 1;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+}
+
+.home-page::-webkit-scrollbar {
+    display: none;
+}
+
+p {
+    padding-top: 10px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.image-container img {
+    height: 100px;
+}
+
+.tiles-container {
+    column-count: 5;
+}
