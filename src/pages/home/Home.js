@@ -20,14 +20,16 @@ function Home() {
                     earum eius eos ex facilis impedit modi molestiae possimus sint sunt tempore!</p>
             </article>
             <section className="tiles-container">
-                {projects !== [] ? projects.map(
+                {projects !== [] ?
+                    projects.map(
                     (project) =>
-                        <Tile
+                        <Tile name={project.id}
                             image={require(`../../data/project-pictures/${project.image}`)}
                             projectName={project.title}
                             projectLink={'/project/' + project.id}
                         />
-                ): <p>No projects yet!</p>}
+                )
+                    : <p>No projects yet!</p>}
             </section>
         </div>
     )

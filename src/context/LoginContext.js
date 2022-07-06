@@ -6,13 +6,18 @@ function LoginContextProvider({ children }) {
 
     const [loggedInStatus, setLoggedInStatus] = useState(false)
 
-    function changeLoggedInStatus() {
-        setLoggedInStatus(!loggedInStatus);
+    function login(){
+        setLoggedInStatus(true);
+    }
+
+    function logout(){
+        setLoggedInStatus(false);
     }
 
     const data= {
         loggedIn: loggedInStatus,
-        changeLoggedInStatusFunction: changeLoggedInStatus,
+        logInFunction: login,
+        logOutFunction: logout
     }
 
     return(

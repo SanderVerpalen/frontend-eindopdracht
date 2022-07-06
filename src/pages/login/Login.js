@@ -6,8 +6,8 @@ import {useContext} from "react";
 
 function Login() {
 
-    const { test1 } = useContext(LoginContext)
-    console.log(test1);
+    const { loggedIn } = useContext(LoginContext)
+    console.log(loggedIn);
 
     return (
         <div className="login-page">
