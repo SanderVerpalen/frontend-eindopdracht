@@ -8,9 +8,9 @@ import LoginContextProvider from "./context/LoginContext";
 ReactDOM.render(
     <React.StrictMode>
         <Router>
-            <LoginContextProvider>
+
                 <App/>
-            </LoginContextProvider>
+
         </Router>
     </React.StrictMode>,
     document.getElementById('root')
