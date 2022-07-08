@@ -1,7 +1,6 @@
 
 .home-page {
     max-height: calc(100vh - 95px);
-
     margin-left: 10px;
     margin-right: 10px;
     flex: 1;
@@ -13,10 +12,6 @@
 .home-page::-webkit-scrollbar {
     display: none;
 }
-p {
-    padding-top: 10px;
-}
-
 
 .image-container {
     display: flex;

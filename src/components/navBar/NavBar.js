@@ -1,25 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './NavBar.css'
 import {NavLink, useHistory} from "react-router-dom";
+import {LoginContext} from "../../context/LoginContext";
 
-function NavBar({ authenticator, authenticatorFunction }) {
+function NavBar() {
 
     const history = useHistory();
+    const { loggedIn, logOutFunction, user } = useContext(LoginContext);
 
     function logOut() {
-        console.log("U wordt uitgelogd");
-        authenticatorFunction(!authenticator);
+        logOutFunction();
         history.push("/");
     }
 
     return (
         <nav>
             <div className="nav-container">
-                <NavLink
+                {(user.roles.length === 2) ? <NavLink
                     exact to="/Dashboard"
                     className="nav-link"
                     activeClassName="active-link"
-                >Dashboard</NavLink>
+                >Dashboard</NavLink> : <img className="logo-pic" src={require('../../assets/logo.png')} alt="logo-pic"/>}
                 <ul>
                     <li>
                         <NavLink
@@ -36,11 +37,11 @@ function NavBar({ authenticator, authenticatorFunction }) {
                         >Request offer</NavLink>
                     </li>
                     <li>
-                        {!authenticator ? <NavLink
+                        {!loggedIn ? <NavLink
                             to="/login"
                             className="nav-link"
                             activeClassName="active-link"
-                        >Login</NavLink> : <button onClick={logOut}>Logout</button>}
+                        >Login</NavLink> : <button className="log-out-button" onClick={logOut}>Logout</button>}
                     </li>
                 </ul>
             </div>

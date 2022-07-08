@@ -1,8 +1,29 @@
-
+import './PostReview.css'
 
 function PostReview() {
+
+    function handleSubmit() {
+
+    }
+
     return (
-        <h1>Post review</h1>
+        <div className="form-page">
+            <form className="request-offer" onSubmit={handleSubmit}>
+                <label htmlFor="project">Project</label>
+                <input/>
+                <label htmlFor="name">Name</label>
+                <input/>
+                <label htmlFor="review">Review</label>
+                <textarea
+                    name="review"
+                    id="review-field"
+                    cols="30" rows="10">
+                    </textarea>
+                <div className="send-button-container">
+                    <button type="submit" className="send-button">Send</button>
+                </div>
+            </form>
+        </div>
     )
 }
 
