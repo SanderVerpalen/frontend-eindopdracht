@@ -14,6 +14,7 @@ function LoginContextProvider({ children }) {
             roles: [],
             username: ''
         },
+        status: 'pending'
     })
 
     const source = axios.CancelToken.source();
@@ -37,7 +38,8 @@ function LoginContextProvider({ children }) {
                             id: response.data.id,
                             roles: response.data.roles,
                             username: response.data.username
-                        }
+                        },
+                        status: 'done'
                     })
                 }catch(e) {
                     console.log(e);
@@ -53,7 +55,8 @@ function LoginContextProvider({ children }) {
                         id: "",
                         roles: [],
                         username: ""
-                    }
+                    },
+                    status: 'done'
                 }
             )
         }
@@ -72,6 +75,7 @@ function LoginContextProvider({ children }) {
                 roles: user.data.roles,
                 username: user.data.username
             },
+            status: 'done'
         });
     }
 
@@ -85,7 +89,8 @@ function LoginContextProvider({ children }) {
                     id: "",
                     roles: [],
                     username: ""
-                }
+                },
+                status: 'done'
             }
         );
     }
@@ -99,7 +104,7 @@ function LoginContextProvider({ children }) {
 
     return(
         <LoginContext.Provider value={data}>
-            { children }
+            {auth.status === 'done' ? children : <p>Loading...</p>}
         </LoginContext.Provider>
     )
 }
