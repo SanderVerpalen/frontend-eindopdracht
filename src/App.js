@@ -11,9 +11,11 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Review from "./pages/review/Review";
 import PostReview from "./pages/postReview/PostReview";
 import ForgotPassword from "./pages/forgotPassword/ForgotPassword"
+import Profile from "./pages/profile/Profile";
 import {useState, useEffect, useContext} from "react";
 import axios from "axios";
 import {LoginContext} from "./context/LoginContext";
+import EmailSend from "./pages/emailSend/EmailSend";
 
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
     const [testing, toggleTesting] = useState(false)
     const [error, setError] = useState(false)
 
-    const{ user } = useContext(LoginContext);
+    const{ user, loggedIn } = useContext(LoginContext);
 
     const source = axios.CancelToken.source();
 
@@ -81,10 +83,16 @@ function App() {
                                     <Review/>
                                 </Route>
                                 <Route exact path="/project/:id/post-review">
-                                    {user.roles.length === 1 ? <PostReview/> : <Redirect to="/"/>}
+                                    {loggedIn ? <PostReview/> : <Redirect to="/"/>}
                                 </Route>
                                 <Route exact path="/forgot-password">
                                     <ForgotPassword/>
+                                </Route>
+                                <Route exact path="/email-send">
+                                    <EmailSend/>
+                                </Route>
+                                <Route exact path="/profile">
+                                    <Profile/>
                                 </Route>
                             </Switch>
                         </div>

@@ -7,7 +7,7 @@ import Tile from "../../components/tile/Tile";
 function Home() {
 
     return (
-        <div className="home-page">
+        <div className="scroll-page">
             <article>
                 <div className="image-container">
                     <img src={profilePicture} alt="profile"/>

@@ -8,8 +8,11 @@
 
 }
 
+.login-button {
+    margin-top: 5px;
+}
+
 .link-and-button-container {
     display: flex;
-    margin-top: 5px;
     justify-content: space-between;
 }

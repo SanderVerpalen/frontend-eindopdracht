@@ -13,7 +13,7 @@ function Login() {
     const [accountName, setAccountName] = useState('');
     const [password, setPassword] = useState('');
     const [loggingIn, toggleLoggingIn] = useState(false);
-    const [error, toggleError] = useState('');
+    const [error, setError] = useState('');
     const [validEmail, toggleValidEmail] = useState(false);
     const [validPassword, toggleValidPassword] = useState(false);
 
@@ -23,7 +23,7 @@ function Login() {
     async function handleLogin(e) {
 
         e.preventDefault()
-        toggleError('');
+        setError('');
         toggleLoggingIn(true);
 
         try {
@@ -37,7 +37,7 @@ function Login() {
             history.push('./')
         } catch (e) {
             console.error(e);
-            toggleError(e.response.data.error);
+            setError(e.response.data.error);
         }
         toggleLoggingIn(false);
     }

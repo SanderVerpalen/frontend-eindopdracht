@@ -1,5 +1,5 @@
 
-.home-page {
+.scroll-page {
     max-height: calc(100vh - 95px);
     margin-left: 10px;
     margin-right: 10px;
@@ -9,7 +9,7 @@
     overflow-y: scroll;
 }
 
-.home-page::-webkit-scrollbar {
+.scroll-page::-webkit-scrollbar {
     display: none;
 }
 

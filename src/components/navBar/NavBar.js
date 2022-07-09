@@ -5,13 +5,10 @@ import {LoginContext} from "../../context/LoginContext";
 
 function NavBar() {
 
-    const history = useHistory();
-    const { loggedIn, logOutFunction, user } = useContext(LoginContext);
 
-    function logOut() {
-        logOutFunction();
-        history.push("/");
-    }
+    const { loggedIn, user } = useContext(LoginContext);
+
+
 
     return (
         <nav>
@@ -41,7 +38,11 @@ function NavBar() {
                             to="/login"
                             className="nav-link"
                             activeClassName="active-link"
-                        >Login</NavLink> : <button className="log-out-button" onClick={logOut}>Logout</button>}
+                        >Login</NavLink> : <NavLink
+                            to="/profile"
+                            className="nav-link"
+                            activeClassName="active-link"
+                        >Profile</NavLink>}
                     </li>
                 </ul>
             </div>
