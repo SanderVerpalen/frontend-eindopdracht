@@ -1,0 +1,18 @@
+
+.forgot-password-container {
+    color:blue;
+    font-size:11px;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.login-button {
+    margin-top: 5px;
+}
+
+.link-and-button-container {
+    display: flex;
+    justify-content: space-between;
+}

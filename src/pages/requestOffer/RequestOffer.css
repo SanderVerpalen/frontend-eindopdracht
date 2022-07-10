@@ -1,0 +1,17 @@
+
+.request-offer-page {
+    display: flex;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.send-button {
+    border-radius: 5px;
+    width: 50%;
+}

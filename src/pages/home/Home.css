@@ -1,0 +1,26 @@
+
+.scroll-page {
+    max-height: calc(100vh - 95px);
+    margin-left: 10px;
+    margin-right: 10px;
+    flex: 1;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+}
+
+.scroll-page::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.image-container img {
+    height: 100px;
+}
+
+.tiles-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
