@@ -5,17 +5,25 @@ import {Link, useHistory} from "react-router-dom";
 
 function CreateAccount() {
 
+    // State for submission to backend.
     const [accountName, setAccountName] = useState('');
     const [password, setPassword] = useState('');
+
+    // State for conditional rendering.
     const [signingUp, toggleSigningUp] = useState(false);
     const [signedUp, toggleSignedUp] = useState(false);
     const [error, toggleError] = useState('');
+    const [response, setResponse] = useState({});
+
+    // State for validating input.
     const [validEmail, toggleValidEmail] = useState(false);
     const [validPassword, toggleValidPassword] = useState(true);
-    const [response, setResponse] = useState({});
+
+
 
     const history = useHistory();
 
+    // Cancel token for unmount-effect.
     const source = axios.CancelToken.source();
 
     async function handleSubmit(e) {
@@ -25,12 +33,14 @@ function CreateAccount() {
         toggleSigningUp(true);
 
         try {
+            //If input is equal to admin credentials...
             if (accountName === 'sander.verpalen@gmail.com') {
                 const response = await axios.post('https://polar-lake-14365.herokuapp.com/api/auth/signup',
                     {
                         "username": accountName,
                         "email": accountName,
                         "password": password,
+                        // Signup user as admin.
                         "role": ["user", "admin"]
                     });
                 setResponse(response);
@@ -55,12 +65,14 @@ function CreateAccount() {
         toggleSigningUp(false);
     }
 
+    // useEffect for validating input.
     useEffect(() => {
             toggleValidEmail(accountName.includes('@'));
             toggleValidPassword(password.length > 5);
         }, [accountName, password]
     );
 
+    // Unmount-effect.
     useEffect(() => {
         return function cleanup() {
             source.cancel();

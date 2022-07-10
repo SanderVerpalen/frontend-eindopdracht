@@ -7,19 +7,27 @@ import axios from "axios";
 
 function Login() {
 
+    // Context for logging the user the loginContext and for conditional rendering.
     const {logInFunction, loggedIn} = useContext(LoginContext);
+
+    // Cancel token for unmount-effect.
     const source = axios.CancelToken.source();
 
+    // State for submission.
     const [accountName, setAccountName] = useState('');
     const [password, setPassword] = useState('');
+
+    // State for conditional rendering.
     const [loggingIn, toggleLoggingIn] = useState(false);
     const [error, setError] = useState('');
+
+    // State for validating input.
     const [validEmail, toggleValidEmail] = useState(false);
     const [validPassword, toggleValidPassword] = useState(false);
 
     const history = useHistory();
 
-
+    // Login function.
     async function handleLogin(e) {
 
         e.preventDefault()
@@ -27,13 +35,15 @@ function Login() {
         toggleLoggingIn(true);
 
         try {
+            // Login the user in the backend.
             const response = await axios.post('https://polar-lake-14365.herokuapp.com/api/auth/signin',
                 {
                     "username": accountName,
                     "password": password
                 });
-
+            // Log the response in the loginContext.
             logInFunction(response);
+            // Push to homepage.
             history.push('./')
         } catch (e) {
             console.error(e);
@@ -42,12 +52,14 @@ function Login() {
         toggleLoggingIn(false);
     }
 
+    // useEffect to validate input.
     useEffect(() => {
             toggleValidEmail(accountName.includes('@'));
             toggleValidPassword(password.length > 5);
         }, [accountName, password]
     );
 
+    // Unmount-effect.
     useEffect(() => {
         return function cleanup() {
             source.cancel();

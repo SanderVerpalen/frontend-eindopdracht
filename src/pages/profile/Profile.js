@@ -7,21 +7,29 @@ import axios from "axios";
 
 function Profile() {
 
-    const {logOutFunction, logInFunction, user} = useContext(LoginContext);
+    // Context for logout function.
+    const {logOutFunction} = useContext(LoginContext);
 
+    // Token to send to the backend.
     const token = localStorage.getItem('token');
+
     const history = useHistory();
 
+    // State for uploading to and make changes in the backend.
     const [selectedImage, setSelectedImage] = useState(null);
     // const [profilePicture, setProfilePicture] = useState(null);
     const [email, setEmail] = useState('');
     // const [info, setInfo] = useState('');
+
+    // State for conditional rendering.
     const [error, setError] = useState('');
     const [loading, toggleLoading] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
 
+    // Cancel token for unmount-effect.
     const source = axios.CancelToken.source();
 
+    // Mount-effect to get current user.
     useEffect(() => {
 
         async function getUser() {
@@ -36,6 +44,8 @@ function Profile() {
                         }
                     }
                 )
+                console.log(response);
+                // Set current user to display profile
                 setCurrentUser(response.data);
             } catch (e) {
                 console.error(e);
@@ -46,16 +56,19 @@ function Profile() {
 
         getUser();
 
+        // Unmount-effect.
         return function cleanup() {
             source.cancel();
         }
     }, [])
 
+    // Logout function.
     function logOut() {
         logOutFunction();
         history.push("/");
     }
 
+    // Function to convert image to base64.
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -69,7 +82,7 @@ function Profile() {
         });
     };
 
-
+    // Function to upload profile picture.
     async function uploadImage(e) {
         e.preventDefault();
         const convertedImage = await convertToBase64(selectedImage);
@@ -78,6 +91,7 @@ function Profile() {
 
 
         try {
+            // Post the converted image to the backend. (This gives a network error?)
             const response = await axios.post('https://polar-lake-14365.herokuapp.com/api/user/image',
                 {
                     "base64Image": convertedImage
@@ -94,16 +108,17 @@ function Profile() {
         toggleLoading(false);
     }
 
+    // Function to change the users' email adres.
     async function changeEmail(e) {
         e.preventDefault();
         setError('');
         toggleLoading(true);
 
         try {
+            // Put the new email adres in the backend. (This gives a network error?)
             const response = await axios.put('https://polar-lake-14365.herokuapp.com/api/user',
                 {
-                    "password": 123467,
-                    "repeatedPassword": 123467
+                    "email": email
                 }, {
                     headers: {
                         "Content-Type": "application/json",

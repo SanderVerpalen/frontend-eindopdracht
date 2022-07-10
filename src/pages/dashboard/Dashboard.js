@@ -4,12 +4,15 @@ import {useEffect, useState} from "react";
 
 function Dashboard() {
 
+    // State for conditional rendering.
     const [userList, setUserList] = useState([]);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState('');
 
+    // Cancel token for unmount effect.
     const source = axios.CancelToken.source();
 
+    // Mount-effect to get user list.
     useEffect(() => {
         const token = localStorage.getItem('token');
 

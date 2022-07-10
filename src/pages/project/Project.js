@@ -6,9 +6,12 @@ import {LoginContext} from "../../context/LoginContext";
 
 function Project() {
 
+    // We use params for correct pathing...
     const {id} = useParams();
+    // And to get project by 'id'.
     const project = projects[id - 1];
 
+    // Context for conditional rendering.
     const {user} = useContext(LoginContext);
 
 

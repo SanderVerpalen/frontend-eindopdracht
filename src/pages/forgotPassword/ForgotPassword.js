@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import './ForgotPassword.css'
 import {useHistory} from "react-router-dom";
 
+// Novi-backend does not support this.
+// Unfinished!
+
 function ForgotPassword() {
 
     const [email, setEmail] = useState('');

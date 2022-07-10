@@ -5,11 +5,13 @@ import {LoginContext} from "../../context/LoginContext";
 
 function NavBar() {
 
+    //Context for conditional rendering.
     const { loggedIn, user } = useContext(LoginContext);
 
     return (
         <nav>
             <div className="nav-container">
+                {/*Render NavLink if user has 2 roles (admin)*/}
                 {(user.roles.length === 2) ? <NavLink
                     exact to="/Dashboard"
                     className="nav-link"
@@ -31,11 +33,14 @@ function NavBar() {
                         >Request offer</NavLink>
                     </li>
                     <li>
-                        {!loggedIn ? <NavLink
+                        {/*Render 'login' NavLink if user is not logged in. Else render 'profile' NavLink.*/}
+                        {!loggedIn ?
+                            <NavLink
                             to="/login"
                             className="nav-link"
                             activeClassName="active-link"
-                        >Login</NavLink> : <NavLink
+                        >Login</NavLink> :
+                            <NavLink
                             to="/profile"
                             className="nav-link"
                             activeClassName="active-link"
