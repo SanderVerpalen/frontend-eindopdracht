@@ -43,6 +43,16 @@ function LoginContextProvider({ children }) {
                     })
                 }catch(e) {
                     console.log(e);
+                    setAuth({
+                        isAuth: false,
+                        user: {
+                            email: '',
+                            id: '',
+                            roles: [],
+                            username: ''
+                        },
+                        status: 'done'
+                    })
                 }
             }
             getUserData();
