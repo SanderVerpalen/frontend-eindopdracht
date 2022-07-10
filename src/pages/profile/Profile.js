@@ -44,7 +44,6 @@ function Profile() {
                         }
                     }
                 )
-                console.log(response);
                 // Set current user to display profile
                 setCurrentUser(response.data);
             } catch (e) {
@@ -88,7 +87,6 @@ function Profile() {
         const convertedImage = await convertToBase64(selectedImage);
         setError('');
         toggleLoading(true);
-
 
         try {
             // Post the converted image to the backend. (This gives a network error?)
@@ -153,7 +151,7 @@ function Profile() {
                             setSelectedImage(e.target.files[0]);
                         }}
                     />
-                    {/*{profilePicture && <img src={`data:image/png;base64,${profilePicture}`}/>}*/}
+                    {/*{profilePicture && <img src={`data:image/png;base64,${profilePicture}`}/>} <-- Doesn't work?*/}
                 </form>
 
                 <form onSubmit={changeEmail}><input

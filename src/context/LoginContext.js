@@ -53,7 +53,7 @@ function LoginContextProvider({ children }) {
                     })
                 }catch(e) {
                     console.log(e);
-                    // If there is an error, still set status to done, else page wont load.
+                    // If there is an error, still set status to done, else the page wont load.
                     setAuth({
                         isAuth: false,
                         user: {
@@ -83,7 +83,7 @@ function LoginContextProvider({ children }) {
             )
         }
 
-        // Unmount-eefect.
+        // Unmount-effect.
         return function cleanup() {
             source.cancel();
         }
