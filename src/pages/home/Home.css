@@ -13,10 +13,7 @@
     display: none;
 }
 
-.image-container {
-    display: flex;
-    justify-content: flex-end;
-}
+
 
 .image-container img {
     height: 100px;

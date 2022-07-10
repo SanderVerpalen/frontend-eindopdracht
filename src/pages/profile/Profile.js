@@ -70,7 +70,8 @@ function Profile() {
     };
 
 
-    async function uploadImage() {
+    async function uploadImage(e) {
+        e.preventDefault();
         const convertedImage = await convertToBase64(selectedImage);
         setError('');
         toggleLoading(true);
@@ -102,7 +103,7 @@ function Profile() {
             const response = await axios.put('https://polar-lake-14365.herokuapp.com/api/user',
                 {
                     "password": 123467,
-                    "repeatedPassword" : 123467
+                    "repeatedPassword": 123467
                 }, {
                     headers: {
                         "Content-Type": "application/json",
@@ -118,29 +119,27 @@ function Profile() {
 
     return (
         <>
-            <button className="log-out-button" onClick={logOut}>Logout</button>
-            <div>
-                <h1>Profile picture</h1>
-                {selectedImage && (
-                    <div>
-                        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)}/>
-                        <br/>
-                        <button onClick={() => setSelectedImage(null)}>Remove</button>
-                        <button onClick={() => uploadImage()}>Upload</button>
+            <div className="form-page">
+                <form onSubmit={uploadImage}>
+                    <h1>Profile picture</h1>
+                    <div className="tile-container">
+                        {selectedImage && <img alt="not fount" src={URL.createObjectURL(selectedImage)}/>}
                     </div>
-                )}
-                <br/>
-
-                <br/>
-
-                <input
-                    type="file"
-                    name="myImage"
-                    onChange={(event) => {
-                        setSelectedImage(event.target.files[0]);
-                    }}
-                />
-                {/*{profilePicture && <img src={`data:image/png;base64,${profilePicture}`}/>}*/}
+                    {selectedImage &&
+                        <div>
+                            <button onClick={() => setSelectedImage(null)}>Remove</button>
+                            <button type="submit">Upload</button>
+                        </div>
+                    }
+                    <input
+                        type="file"
+                        name="myImage"
+                        onChange={(e) => {
+                            setSelectedImage(e.target.files[0]);
+                        }}
+                    />
+                    {/*{profilePicture && <img src={`data:image/png;base64,${profilePicture}`}/>}*/}
+                </form>
 
                 <form onSubmit={changeEmail}><input
                     name="email"
@@ -148,16 +147,20 @@ function Profile() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                    <button type="submit">Change email</button>
+                    <button className="change-email-button" type="submit">Change email</button>
                 </form>
+
                 {loading && <p>Loading...</p>}
                 {error && <p>Er gaat iets mis.</p>}
-                {currentUser && <article>
-                    <h3>{currentUser.username}</h3>
-                    <p>{currentUser.email}</p>
-                </article>}
 
+                {currentUser &&
+                    <article>
+                        <h3>{currentUser.username}</h3>
+                        <p>{currentUser.email}</p>
+                        <button className="log-out-button" onClick={logOut}>Logout</button>
+                    </article>}
             </div>
+
         </>
     )
 }

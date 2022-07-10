@@ -87,6 +87,7 @@ article {
 }
 
 h3, p {
+    text-shadow: 1px 1px white;
     padding-top: 10px;
 }
 
@@ -104,9 +105,10 @@ footer {
     display: flex;
     padding: 10px;
     margin: 10px;
-    height: 50%;
+    min-height: 50%;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 form {
@@ -116,6 +118,7 @@ form {
     text-shadow: 1px 1px white;
     font-weight: bold;
 }
+
 button {
     padding-left: 4px;
     padding-right: 4px;
@@ -137,6 +140,12 @@ input {
 .button-container {
     display: flex;
     justify-content: flex-end;
+}
+
+.image-container {
+    display: flex;
+    justify-content: flex-end;
+    height: 100px;
 }
 
 

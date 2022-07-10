@@ -12,7 +12,7 @@ function Tile({ projectName, image, projectLink}) {
 
     return (
         <div onClick={goToProject}  className="tile-container">
-            <img title={projectName} src={image} alt=""/>
+            <img title={projectName} src={image} alt="project-pic"/>
         </div>
 
     )
