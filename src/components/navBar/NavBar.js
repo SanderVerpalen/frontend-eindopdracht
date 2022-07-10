@@ -1,14 +1,11 @@
 import React, {useContext} from 'react';
 import './NavBar.css'
-import {NavLink, useHistory} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {LoginContext} from "../../context/LoginContext";
 
 function NavBar() {
 
-
     const { loggedIn, user } = useContext(LoginContext);
-
-
 
     return (
         <nav>

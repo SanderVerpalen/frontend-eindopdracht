@@ -1,5 +1,8 @@
 import './PostReview.css'
 
+// Novi-backend does not support this.
+// Unfinished!
+
 function PostReview() {
 
     function handleSubmit() {
