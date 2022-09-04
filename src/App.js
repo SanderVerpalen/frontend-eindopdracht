@@ -18,15 +18,21 @@ import {LoginContext} from "./context/LoginContext";
 import EmailSend from "./pages/emailSend/EmailSend";
 
 
+
+
 function App() {
 
     const [response, setResponse] = useState('')
     const [testing, toggleTesting] = useState(false)
     const [error, setError] = useState(false)
+    const [quote, setQuote] = useState('')
+    const [fetching, toggleFetching] = useState(false)
 
     const{ user, loggedIn } = useContext(LoginContext);
 
     const source = axios.CancelToken.source();
+
+
 
     useEffect(() => {
         async function test() {
@@ -42,6 +48,23 @@ function App() {
         }
 
         test();
+
+        async function getQuote(){
+            toggleFetching(true);
+            setError(false);
+            try{
+                setQuote(await axios.get('https://zenquotes.io/api/quotes/'))
+            }catch (e) {
+                console.error(e);
+                setError(true);
+            }
+            toggleFetching(false);
+        }
+
+        getQuote();
+
+        console.log(fetching);
+        console.log(quote);
 
         return function cleanup() {
             source.cancel();
@@ -104,5 +127,7 @@ function App() {
         </div>
     );
 }
+
+
 
 export default App;

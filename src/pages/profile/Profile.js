@@ -89,8 +89,9 @@ function Profile() {
         toggleLoading(true);
 
         try {
+            console.log(convertedImage);
             // Post the converted image to the backend. (This gives a network error?)
-            const response = await axios.post('https://polar-lake-14365.herokuapp.com/api/user/image',
+            const response = await axios.post('https://frontend-educational-backend.herokuapp.com/api/user/image',
                 {
                     "base64Image": convertedImage
                 }, {
@@ -114,7 +115,7 @@ function Profile() {
 
         try {
             // Put the new email adres in the backend. (This gives a network error?)
-            const response = await axios.put('https://polar-lake-14365.herokuapp.com/api/user',
+            const response = await axios.put('https://frontend-educational-backend.herokuapp.com/api/user',
                 {
                     "email": email
                 }, {
@@ -136,7 +137,7 @@ function Profile() {
                 <form onSubmit={uploadImage}>
                     <h1>Profile picture</h1>
                     <div className="tile-container">
-                        {selectedImage && <img alt="not fount" src={URL.createObjectURL(selectedImage)}/>}
+                        {selectedImage && <img alt="not found" src={URL.createObjectURL(selectedImage)}/>}
                     </div>
                     {selectedImage &&
                         <div>

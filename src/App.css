@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Josefin+Sans:wght@100&display=swap');
+
+
 .App {
     text-align: center;
 }
@@ -109,6 +112,10 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.scroll-page, .form-page {
+    font-family: 'Josefin', sans-serif;
 }
 
 form {
